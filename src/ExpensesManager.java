@@ -39,18 +39,20 @@ public class ExpensesManager {
     }
 
     void removeExpense(double expense) {
-        boolean exp = expenses.contains(expense);
-        int index = 0;
-        if (exp == true) {
-            for (int i = 0; i < expenses.size(); i++) {
-                if (expenses.get(i) == expense) {
-                    index = i;
-                } break;
-            }
-            expenses.remove(index);
-            System.out.println("Трата удалена");
+        if (expenses.isEmpty()) {
+            System.out.println("Список трат пуст.");
         } else {
-            System.out.println("Такой траты нет");
+            if (expenses.contains(expense)) {
+                for (int i = 0; i < expenses.size(); i++) {
+                    if (expenses.get(i) == expense) {
+                        expenses.remove(i);
+                        System.out.println("Трата удалена!");
+                        break;
+                    }
+                }
+            } else {
+                System.out.println("Такой траты нет.");
+            }
         }
     }
 }
